@@ -211,7 +211,7 @@ var
   m : TMatriz;
   v : TVetor;
 begin
-  //StartTests;
+  StartTests;
   TestCase('Comparar Matrizes', @TestCompararMatrizes);		  
   TestCase('Instanciar Matriz por Texto', @TestInstanciarMatrizPorTexto);	
   TestCase('Operacoes Matrizes', @TestOperacoes);	
@@ -226,5 +226,5 @@ begin
   //ReducaoDeGauss(m, v, 3, 3);
   //MostrarVetor(ResolucaoGauss(m, v, 3), 3);
 
-  //EndTests;
+  EndTests;
 end.
