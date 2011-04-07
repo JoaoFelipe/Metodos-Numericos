@@ -171,7 +171,7 @@ begin
     swap(Coeficientes[j], Coeficientes[k]);
     for i := j + 1 to Linhas do
     begin
-      Multiplicador := Matriz[i, j] / Matriz[i, i];
+      Multiplicador := Matriz[i, j] / Matriz[j, j];
       Matriz[i, j] := 0;
       Matriz := OperarLinha(Matriz, i, j, Multiplicador, j + 1, Colunas);
       Coeficientes[i] := Coeficientes[i] - Multiplicador*Coeficientes[j];
