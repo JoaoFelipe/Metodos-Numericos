@@ -212,19 +212,19 @@ var
   v : TVetor;
 begin
   //StartTests;
-  //TestCase('Comparar Matrizes', @TestCompararMatrizes);		  
-  //TestCase('Instanciar Matriz por Texto', @TestInstanciarMatrizPorTexto);	
-	//TestCase('Operacoes Matrizes', @TestOperacoes);	
-  //TestCase('Multiplicador', @TestMultiplicador);	
+  TestCase('Comparar Matrizes', @TestCompararMatrizes);		  
+  TestCase('Instanciar Matriz por Texto', @TestInstanciarMatrizPorTexto);	
+  TestCase('Operacoes Matrizes', @TestOperacoes);	
+  TestCase('Multiplicador', @TestMultiplicador);	
 
-  //TestCase('Comparar Vetores', @TestCompararVetores);	
-  //TestCase('Instanciar Vetor por Texto', @TestInstanciarVetorPorTexto);	
-  //TestCase('Reducao de Gauss', @TestReducaoDeGauss);	
-  //TestCase('Resolucao Gauss', @TestResolucaoGauss);	
-  m := NovaMatriz('[[1, 1, 1][2, -1, 3][3, 2, -1]]');
-  v := NovoVetor('[6, 3, 4]');
-  ReducaoDeGauss(m, v, 3, 3);
-  MostrarVetor(ResolucaoGauss(m, v, 3), 3);
+  TestCase('Comparar Vetores', @TestCompararVetores);	
+  TestCase('Instanciar Vetor por Texto', @TestInstanciarVetorPorTexto);	
+  TestCase('Reducao de Gauss', @TestReducaoDeGauss);	
+  TestCase('Resolucao Gauss', @TestResolucaoGauss);	
+  //m := NovaMatriz('[[1, 1, 1][2, -1, 3][3, 2, -1]]');
+  //v := NovoVetor('[6, 3, 4]');
+  //ReducaoDeGauss(m, v, 3, 3);
+  //MostrarVetor(ResolucaoGauss(m, v, 3), 3);
 
   //EndTests;
 end.
