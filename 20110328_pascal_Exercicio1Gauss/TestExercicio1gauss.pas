@@ -2,18 +2,7 @@ program TestExercicio1gauss;
 
 uses TestUnit, Exercicio1gaussUnit, SysUtils;
 
-procedure MostrarMatriz(matriz: TMatriz; linhas, colunas: integer);
-var i, j: integer;
-temp: string;
-begin
-  for i := 1 to linhas do
-  begin
-    temp := '';
-    for j := 1 to colunas-1 do
-      temp := temp + FormatFloat('0.00000',matriz[i,j]) + ', ';
-    writeln('[', temp, FormatFloat('0.00000',matriz[i,colunas]) , ']');
-  end;
-end;
+
 
 function MatrizEquals(matriz1, matriz2: TMatriz; linhas, colunas: integer): boolean;
 var i, j: integer;
@@ -34,15 +23,6 @@ begin
     end;
 end;
 
-procedure MostrarVetor(Vetor: TVetor; Colunas: integer);
-var i: integer;
-temp: string;
-begin
-  temp := '';
-  for i := 1 to colunas-1 do
-    temp := temp + FormatFloat('0.00000', Vetor[i]) + ', ';
-  writeln('[', temp, FormatFloat('0.00000', Vetor[Colunas]) , ']');
-end;
 
 function VetorEquals(Vetor1, Vetor2: TVetor; Colunas: integer): boolean;
 var i: integer;
@@ -205,6 +185,7 @@ begin
   ReducaoDeGauss(Matriz, Coeficientes, 3, 3);
   Assert(VetorEquals(Coeficientes, CoeficientesResultado, 3));
   Assert(MatrizEquals(Matriz, MatrizResultado, 3, 3));
+
 end;
 
 
@@ -224,18 +205,26 @@ begin
   Coeficientes := NovoVetor('[1, 1.666666, 0]');
   Resultado := NovoVetor('[-3, 5, 0]');  
   Assert(VetorEquals(ResolucaoGauss(Matriz, Coeficientes, 3), Resultado, 3));
+
 end;
-
+var 
+  m : TMatriz;
+  v : TVetor;
 begin
-  StartTests;
-  TestCase('Comparar Matrizes', @TestCompararMatrizes);		  
-  TestCase('Instanciar Matriz por Texto', @TestInstanciarMatrizPorTexto);	
-	TestCase('Operacoes Matrizes', @TestOperacoes);	
-  TestCase('Multiplicador', @TestMultiplicador);	
+  //StartTests;
+  //TestCase('Comparar Matrizes', @TestCompararMatrizes);		  
+  //TestCase('Instanciar Matriz por Texto', @TestInstanciarMatrizPorTexto);	
+	//TestCase('Operacoes Matrizes', @TestOperacoes);	
+  //TestCase('Multiplicador', @TestMultiplicador);	
 
-  TestCase('Comparar Vetores', @TestCompararVetores);	
-  TestCase('Instanciar Vetor por Texto', @TestInstanciarVetorPorTexto);	
-  TestCase('Reducao de Gauss', @TestReducaoDeGauss);	
-  TestCase('Resolucao Gauss', @TestResolucaoGauss);	
-  EndTests;
+  //TestCase('Comparar Vetores', @TestCompararVetores);	
+  //TestCase('Instanciar Vetor por Texto', @TestInstanciarVetorPorTexto);	
+  //TestCase('Reducao de Gauss', @TestReducaoDeGauss);	
+  //TestCase('Resolucao Gauss', @TestResolucaoGauss);	
+  m := NovaMatriz('[[1, 1, 1][2, -1, 3][3, 2, -1]]');
+  v := NovoVetor('[6, 3, 4]');
+  ReducaoDeGauss(m, v, 3, 3);
+  MostrarVetor(ResolucaoGauss(m, v, 3), 3);
+
+  //EndTests;
 end.

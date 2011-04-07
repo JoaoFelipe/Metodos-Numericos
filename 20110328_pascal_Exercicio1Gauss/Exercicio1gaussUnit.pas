@@ -15,11 +15,37 @@ interface
   function NovoVetor(texto: string): TVetor;
   procedure ReducaoDeGauss(var Matriz: TMatriz; var Coeficientes: TVetor; Linhas, Colunas:integer);
   function ResolucaoGauss(Matriz: TMatriz; Coeficientes: TVetor; Linhas:integer): TVetor;
-
+  procedure MostrarMatriz(matriz: TMatriz; linhas, colunas: integer);
+    procedure MostrarVetor(Vetor: TVetor; Colunas: integer);
 implementation
   
 Uses SysUtils;
  
+
+procedure MostrarMatriz(matriz: TMatriz; linhas, colunas: integer);
+var i, j: integer;
+temp: string;
+begin
+  for i := 1 to linhas do
+  begin
+    temp := '';
+    for j := 1 to colunas-1 do
+      temp := temp + FormatFloat('0.00000',matriz[i,j]) + ', ';
+    writeln('[', temp, FormatFloat('0.00000',matriz[i,colunas]) , ']');
+  end;
+end;
+
+procedure MostrarVetor(Vetor: TVetor; Colunas: integer);
+var i: integer;
+temp: string;
+begin
+  temp := '';
+  for i := 1 to colunas-1 do
+    temp := temp + FormatFloat('0.00000', Vetor[i]) + ', ';
+  writeln('[', temp, FormatFloat('0.00000', Vetor[Colunas]) , ']');
+end;
+
+
 procedure swap(var x:real; var y:real);
 var
   temp:real;
@@ -145,11 +171,14 @@ begin
     swap(Coeficientes[j], Coeficientes[k]);
     for i := j + 1 to Linhas do
     begin
-      Multiplicador := Matriz[i, j] / Matriz[j, j];
+      Multiplicador := Matriz[j, j] / Matriz[i, j];
       Matriz[i, j] := 0;
       Matriz := OperarLinha(Matriz, i, j, Multiplicador, j + 1, Colunas);
-      Coeficientes[i] := Coeficientes[i] - Multiplicador*Coeficientes[j]
+      Coeficientes[i] := Coeficientes[i] - Multiplicador*Coeficientes[j];
+      writeln(multiplicador);
     end;
+    MostrarMatriz(Matriz, Linhas, Colunas); writeln('->');
+    MostrarVetor(Coeficientes, Linhas); writeln(':')
   end;  
 end;
 
