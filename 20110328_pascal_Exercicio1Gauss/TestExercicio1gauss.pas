@@ -177,15 +177,15 @@ begin
   Assert(VetorEquals(Coeficientes, CoeficientesResultado, 3));
   Assert(MatrizEquals(Matriz, MatrizResultado, 3, 3));
 
-//  InitTest('Redução de Gauss Da Matriz [[5, 2, 1][3, 1, 4][1, 1, 3]] com coeficientes [0, -7, 5] deve alterar a matriz para [[5, 2, 1][0, 0.6, 2.8][0, 0, 4.3333333]] e coeficientes [0, 5, -5.333333]');
-//  Matriz := NovaMatriz('[[5, 2, 1][3, 1, 4][1, 1, 3]]');
-//  MatrizResultado := NovaMatriz('[[5, 2, 1][0, 0.6, 2.8][0, 0, 4.3333333]]');
-//  Coeficientes := NovoVetor('[0, -7, 5]');
-//  CoeficientesResultado := NovoVetor('[0, 5, -5.333333]');
-//  ReducaoDeGauss(Matriz, Coeficientes, 3, 3);
-//  Assert(VetorEquals(Coeficientes, CoeficientesResultado, 3));
-//  Assert(MatrizEquals(Matriz, MatrizResultado, 3, 3));
-//
+  InitTest('Redução de Gauss Da Matriz [[5, 2, 1][3, 1, 4][1, 1, 3]] com coeficientes [0, -7, 5] deve alterar a matriz para [[5, 2, 1][0, 0.6, 2.8][0, 0, 4.3333333]] e coeficientes [0, 5, -5.333333]');
+  Matriz := NovaMatriz('[[5, 2, 1][3, 1, 4][1, 1, 3]]');
+  MatrizResultado := NovaMatriz('[[5, 2, 1][0, 0.6, 2.8][0, 0, 4.3333333]]');
+  Coeficientes := NovoVetor('[0, -7, 5]');
+  CoeficientesResultado := NovoVetor('[0, 5, -5.333333]');
+  ReducaoDeGauss(Matriz, Coeficientes, 3, 3);
+  Assert(VetorEquals(Coeficientes, CoeficientesResultado, 3));
+  Assert(MatrizEquals(Matriz, MatrizResultado, 3, 3));
+
 end;
 
 
@@ -194,18 +194,18 @@ var
   Matriz: TMatriz;
   Coeficientes, Resultado, ResultadoEsperado: TVetor;
 begin
-//  InitTest('Resolução de [[-8, 8, 1][0, -4, 4.5][0, 0, 1.125]] com coeficientes [-4, 7, -13] deve retornar [-15.69, -14.75, -11.56]');
-//  Matriz := NovaMatriz('[[-8, 8, 1][0, -4, 4.5][0, 0, 1.125]]');
-//  Coeficientes:= NovoVetor('[-4, 7, -13]');
-//  Resultado := NovoVetor('[-15.694444, -14.75, -11.55555]');  
-//  Assert(VetorEquals(ResolucaoGauss(Matriz, Coeficientes, 3), Resultado, 3));
-//
-//  InitTest('Resolução de [[3, 2, 4][0, 0.333333, 2.8][0, 0, 4.3333333]] com coeficientes [0, 5, -5.333333] deve retornar [-3, 5, 0]');
-//  Matriz := NovaMatriz('[[3, 2, 4][0, 0.333333, 0.666666][0, 0, -8]]');
-//  Coeficientes := NovoVetor('[1, 1.666666, 0]');
-//  Resultado := NovoVetor('[-3, 5, 0]');  
-//  Assert(VetorEquals(ResolucaoGauss(Matriz, Coeficientes, 3), Resultado, 3));
-//
+  InitTest('Resolução de [[-8, 8, 1][0, -4, 4.5][0, 0, 1.125]] com coeficientes [-4, 7, -13] deve retornar [-15.69, -14.75, -11.56]');
+  Matriz := NovaMatriz('[[-8, 8, 1][0, -4, 4.5][0, 0, 1.125]]');
+  Coeficientes:= NovoVetor('[-4, 7, -13]');
+  Resultado := NovoVetor('[-15.694444, -14.75, -11.55555]');  
+  Assert(VetorEquals(ResolucaoGauss(Matriz, Coeficientes, 3), Resultado, 3));
+
+  InitTest('Resolução de [[3, 2, 4][0, 0.333333, 2.8][0, 0, 4.3333333]] com coeficientes [0, 5, -5.333333] deve retornar [-3, 5, 0]');
+  Matriz := NovaMatriz('[[3, 2, 4][0, 0.333333, 0.666666][0, 0, -8]]');
+  Coeficientes := NovoVetor('[1, 1.666666, 0]');
+  Resultado := NovoVetor('[-3, 5, 0]');  
+  Assert(VetorEquals(ResolucaoGauss(Matriz, Coeficientes, 3), Resultado, 3));
+
 end;
 var 
   m : TMatriz;
