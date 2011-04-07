@@ -170,7 +170,7 @@ var
 begin
   InitTest('Redução de Gauss Da Matriz [3, -5, 3][-8, 8, 1][4, -8, 4] com coeficientes [-8, -4, 9] deve alterar a matriz para [[-8, 8, 1][0, -4, 4.5][0, 0, 1.125]] e coeficientes [-4, 7, -13]');
   Matriz := NovaMatriz('[[3, -5, 3][-8, 8, 1][4, -8, 4]]');
-  MatrizResultado := NovaMatriz('[[-8, 8, 1][0, -4, 4.5][0, 0, 1.5]]');
+  MatrizResultado := NovaMatriz('[[-8, 8, 1][0, -4, 4.5][0, 0, 1.125]]');
   Coeficientes := NovoVetor('[-8, -4, 9]');
   CoeficientesResultado := NovoVetor('[-4, 7, -13]');
   ReducaoDeGauss(Matriz, Coeficientes, 3, 3);
