@@ -1,4 +1,4 @@
-program Trabalho1;
+program TestExercicio1gauss;
 
 uses TestUnit, TestMatrizUnit, TestReducaoGaussUnit, TestMetodosIterativosUnit;
 
