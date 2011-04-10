@@ -131,89 +131,13 @@ begin
 end;
 
 function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-var
-  i, j, iter: integer;
-  F: TMatriz;
-  d: TVetor;
-  delta : real;
 begin  
-  GaussSeidel:=MetodosIterativos(x, xInicial, x, Matriz, Vetor,Iteracoes, Linhas, Colunas, epsilon);
-//  iter := 0;
-//  x := xInicial;
-//  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
-//
-//  if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) then
-//  begin
-//    GaussSeidel := -1;
-//    exit();
-//  end;
-//
-//  delta := epsilon;
-//  while (iter < Iteracoes) and (delta >= epsilon) do
-//  begin
-//
-//    for i := 1 to Linhas do
-//    begin
-//      x[i] := d[i];
-//      for j := 1 to Colunas do
-//        x[i]:= x[i] + F[i, j]*x[j];
-//    end;
-//
-//    delta := 0;
-//    for i := 1 to Linhas do
-//      if ABS(x[i] - xInicial[i]) > delta then
-//        delta := ABS(x[i] - xInicial[i]);
-//    xInicial := x;
-//    inc(iter);
-//  end;
-//
-//  if (delta >= epsilon) then
-//    GaussSeidel := 0
-//  else
-//    GaussSeidel := iter;
+  GaussSeidel := MetodosIterativos(x, xInicial, x, Matriz, Vetor,Iteracoes, Linhas, Colunas, epsilon);
 end;
 
 function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-var
-  i, j, iter: integer;
-  F: TMatriz;
-  d: TVetor;
-  delta : real;
 begin  
-  Jacobi:=MetodosIterativos(x, xInicial, xInicial, Matriz, Vetor,Iteracoes, Linhas, Colunas, epsilon);
-//  iter := 0;
-//  x := xInicial;
-//  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
-//
-//  if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) then
-//  begin
-//    Jacobi := -1;
-//    exit();
-//  end;
-//
-//  delta := epsilon;
-//  while (iter < Iteracoes) and (delta >= epsilon) do
-//  begin
-//
-//    for i := 1 to Linhas do
-//    begin
-//      x[i] := d[i];
-//      for j := 1 to Colunas do
-//        x[i]:= x[i] + F[i, j]*xInicial[j];
-//    end;
-//
-//    delta := 0;
-//    for i := 1 to Linhas do
-//      if ABS(x[i] - xInicial[i]) > delta then
-//        delta := ABS(x[i] - xInicial[i]);
-//    xInicial := x;
-//    inc(iter);
-//  end;
-//
-//  if (delta >= epsilon) then
-//    Jacobi := 0
-//  else
-//    Jacobi := iter;
+  Jacobi := MetodosIterativos(x, xInicial, xInicial, Matriz, Vetor,Iteracoes, Linhas, Colunas, epsilon);
 end;
 
    
