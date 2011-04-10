@@ -157,9 +157,7 @@ var
   Vetor, AproximacaoInicial, x, xResultado : TVetor;
   RetornoGaussSeidel : integer;
 begin
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0, 0, 0] após 0 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0, 0, 0] com maximo de 0 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -177,7 +175,7 @@ begin
   RetornoGaussSeidel := GaussSeidel(x, AproximacaoInicial, Matriz, Vetor, 0, 3, 3, 0.001);
   ASSERT(RetornoGaussSeidel = -1);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[1, 0.6000, 0.5111] após 1 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[1, 0.6000, 0.5111] com maximo de 1 iteração e retornar 0 por convergir, mas não chegar ao valor proximo');
   //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
   //x=[0.5904, 0.6476, 0.5809]
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
@@ -188,10 +186,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoGaussSeidel = 0);
   
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.6296, 0.6459, 0.5731] após 2 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] 
-  //d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.6296, 0.6459, 0.5731] com maximo de 2 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -200,10 +195,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoGaussSeidel = 0);
   
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5937, 0.6479, 0.5801] após 3 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] 
-  //d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5937, 0.6479, 0.5801] com maximo de 3 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -212,10 +204,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoGaussSeidel = 0);
   
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5907, 0.6477, 0.5809] após 4 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] 
-  //d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5907, 0.6477, 0.5809] com maximo de 4 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -224,10 +213,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoGaussSeidel = 0);
   
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5905, 0.6476, 0.5809] após 5 iterações e retornar 5 por convergir, e chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] 
-  //d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5905, 0.6476, 0.5809] com maximo de 5 iterações e retornar 5 por convergir, e chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -236,7 +222,8 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoGaussSeidel = 5);
   
-  InitTest('A matriz [[2, -1][1, 2]] com vetor [1, 3] e aproximação [0, 0, 0] deve gerar x=[1.008, 0.996] após 10 iterações e retornar 4 por convergir, e chegar ao valor proximo');
+  //Matriz da Aulta
+  InitTest('A matriz [[2, -1][1, 2]] com vetor [1, 3] e aproximação [0, 0, 0] deve gerar x=[1.008, 0.996] com maximo de 10 iterações e retornar 4 por convergir, e chegar ao valor proximo');
   Matriz := NovaMatriz('[[2, -1][1, 2]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[1, 3]');
@@ -253,9 +240,7 @@ var
   Vetor, AproximacaoInicial, x, xResultado : TVetor;
   RetornoJacobi : integer;
 begin
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0, 0, 0] após 0 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0, 0, 0] com maximo de 0 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -273,7 +258,7 @@ begin
   RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 0, 3, 3, 0.001);
   ASSERT(RetornoJacobi = -1);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[1, 1, 1] após 1 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[1, 1, 1] com maximo de 1 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
   //x=[0.5904, 0.6476, 0.5809]
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
@@ -284,9 +269,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.3334, 0.4, 0.3334] após 2 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.3334, 0.4, 0.3334] com maximo de 2 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -295,9 +278,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.7555, 0.7999, 0.7481] após 3 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.7555, 0.7999, 0.7481] com maximo de 3 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -306,9 +287,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.4840, 0.5481, 0.4766] após 4 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.4840, 0.5481, 0.4766] com maximo de 4 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -317,9 +296,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5899, 0.6471, 0.5804] após 16 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5899, 0.6471, 0.5804] com maximo de 16 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -328,9 +305,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5908, 0.6479, 0.5813] após 17 iterações e retornar 17 por convergir, e chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5908, 0.6479, 0.5813] com maximo de 17 iterações e retornar 17 por convergir, e chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
@@ -339,9 +314,7 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 17);
 
-  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5908, 0.6479, 0.5813] após 18 iterações e retornar 17 por convergir, e chegar ao valor proximo');
-  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
-  //x=[0.5904, 0.6476, 0.5809]
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5908, 0.6479, 0.5813] com maximo de 18 iterações e retornar 17 por convergir, e chegar ao valor proximo');
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
