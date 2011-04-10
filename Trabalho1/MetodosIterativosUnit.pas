@@ -4,8 +4,6 @@ unit MetodosIterativosUnit;
 interface
   uses MatrizUnit;
 
-  type PVetor = ^TVetor;
-
   function ConvergeCriterioLinhas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
   function ConvergeCriterioColunas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
   function ConvergeCriterioSassenfeld(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
@@ -115,7 +113,7 @@ begin
     begin
       x[i] := d[i];
       for j := 1 to Colunas do
-        x[i]:= x[i] + F[i, j]*pX[j];
+        x[i]:= x[i] + F[i, j]*x[j];
     end;
 
     delta := 0;
@@ -139,7 +137,7 @@ var
   d: TVetor;
   delta : real;
 begin  
-  GaussSeidel:=MetodosIterativos(x, xInicial, x, Matriz, Vetor, Linhas,Iteracoes, Colunas, epsilon);
+  GaussSeidel:=MetodosIterativos(x, xInicial, x, Matriz, Vetor, Linhas, Colunas, epsilon);
 //  iter := 0;
 //  x := xInicial;
 //  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
