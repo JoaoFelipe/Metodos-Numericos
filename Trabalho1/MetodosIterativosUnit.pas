@@ -99,7 +99,7 @@ begin
   x := xInicial;
   MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
 
-  if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) or (iteracoes = 0) then
+  if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) then
   begin
     GaussSeidel := -1;
     exit();
@@ -125,9 +125,9 @@ begin
   end;
 
   if (delta >= epsilon) then
-    GaussSeidel := iter
+    GaussSeidel := 0
   else
-    GaussSeidel := 0;
+    GaussSeidel := iter;
 end;
 
 function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
@@ -141,7 +141,7 @@ begin
   x := xInicial;
   MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
 
-  if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) or (iteracoes = 0) then
+  if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) then
   begin
     Jacobi := -1;
     exit();
@@ -167,9 +167,9 @@ begin
   end;
 
   if (delta >= epsilon) then
-    Jacobi := iter
+    Jacobi := 0
   else
-    Jacobi := 0;
+    Jacobi := iter;
 end;
 
    
