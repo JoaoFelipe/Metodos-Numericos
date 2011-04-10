@@ -137,7 +137,7 @@ var
   d: TVetor;
   delta : real;
 begin  
-  GaussSeidel:=MetodosIterativos(x, xInicial, x, Matriz, Vetor, Linhas, Colunas, epsilon);
+  GaussSeidel:=MetodosIterativos(x, xInicial, x, Matriz, Vetor,Iteracoes, Linhas, Colunas, epsilon);
 //  iter := 0;
 //  x := xInicial;
 //  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
