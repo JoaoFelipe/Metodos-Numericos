@@ -93,7 +93,7 @@ begin
   Resultado := NovoVetor('[-15.694444, -14.75, -11.55555]');  
   Assert(VetorEquals(ResolucaoCompletaGauss(Matriz, Coeficientes, 3, 3), Resultado, 3));
 
-  InitTest('Resolução de [[3, 2, 4][0, 0.333333, 2.8][0, 0, 4.3333333]] com coeficientes [0, 5, -5.333333] deve retornar [-3, 5, 0]');
+  InitTest('Resolução de [[5, 2, 1][3, 1, 4][1, 1, 3]] com coeficientes [0, -7, 5] deve retornar [0, -7, 5]');
   Matriz := NovaMatriz('[[5, 2, 1][3, 1, 4][1, 1, 3]]');
   Coeficientes := NovoVetor('[0, -7, 5]');
   ReducaoDeGauss(Matriz, Coeficientes, 3, 3);
