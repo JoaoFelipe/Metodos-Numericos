@@ -76,8 +76,13 @@ begin
       Resultado := ResolucaoCompletaGauss(CoeficientesTemp, TermosIndependentesTemp, Tamanho, Tamanho);
       MostrarResultados(Resultado, Tamanho);
     end else if Escolha = 2 then 
-    begin
-      ExecutarIterativo(@jacobi);
-    end;
+      ExecutarIterativo(@Jacobi)
+    else if Escolha = 3 then
+      ExecutarIterativo(@GaussSeidel)
+    else if Escolha = 4 then
+      LerMatriz
+    else
+      rodando := false;
+
   end;
 end.
