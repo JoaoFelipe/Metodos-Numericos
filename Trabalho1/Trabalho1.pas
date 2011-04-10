@@ -88,7 +88,7 @@ begin
         else if Escolha = 3 then
           Iterativo('GaussSeidel')
           else if Escolha = 4 then
-            LerMatriz;
+            LerMatriz
             else if Escolha = 5 then
               rodando := false;
   end;
