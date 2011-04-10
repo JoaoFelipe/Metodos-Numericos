@@ -78,7 +78,7 @@ begin
     writeln('4- Desejo escolher outro sistema');
     writeln('5- Sair');
     readln(Escolha);
-    //Esqueci como usar case e não estou com vontade de procurar agora
+
     CoeficientesTemp := Coeficientes;
     TermosIndependentesTemp := TermosIndependentes;
     
