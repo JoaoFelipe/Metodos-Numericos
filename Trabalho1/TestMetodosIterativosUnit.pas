@@ -341,6 +341,15 @@ begin
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 17);
 
+  InitTest('A matriz [[2, -1][1, 2]] com vetor [1, 3] e aproximação [0, 0, 0] deve gerar x=[1.008, 0.996] após 10 iterações e retornar 4 por convergir, e chegar ao valor proximo');
+  Matriz := NovaMatriz('[[2, -1][1, 2]]');
+  AproximacaoInicial := NovoVetor('[0, 0, 0]');
+  Vetor := NovoVetor('[1, 3]');
+  xResultado := NovoVetor('[1.008, 0.996]');
+  RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 10, 2, 2, 0.1);
+  ASSERT(VetorEquals(x, xResultado, 2));
+  ASSERT(RetornoJacobi = 4);
+
 end;
 
 end.
