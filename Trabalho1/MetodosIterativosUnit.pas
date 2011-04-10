@@ -128,7 +128,7 @@ begin
 //    GaussSeidel := 0
 //  else
 //    GaussSeidel := 1;
-  GaussSeidel := MetodoIterativo(x, xInicial, &x, Matriz, Vetor, Iteracoes, Linhas, Colunas, epsilon);
+  GaussSeidel := MetodoIterativo(x, xInicial, @x, Matriz, Vetor, Iteracoes, Linhas, Colunas, epsilon);
 end;
 
 function MetodoIterativo(var x, xInicial, usado: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
