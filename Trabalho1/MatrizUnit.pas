@@ -1,8 +1,8 @@
 unit MatrizUnit;
 
 interface
-  Type TMatriz = array[1..100, 1..100] of Real;
-  Type TVetor = array[1..100] of Real;
+  Type TMatriz = array[1..20, 1..20] of Real;
+  Type TVetor = array[1..20] of Real;
 
   function MatrizEquals(matriz1, matriz2: TMatriz; linhas, colunas: integer): boolean;
   function MatrizNotEquals(matriz1, matriz2: TMatriz; linhas, colunas: integer): boolean;
