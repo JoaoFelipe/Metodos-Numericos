@@ -342,13 +342,11 @@ begin
   ASSERT(RetornoJacobi = 17);
 
   InitTest('A matriz [[2, -1][1, 2]] com vetor [1, 3] e aproximação [0, 0, 0] deve gerar x=[0.969, 1.031] após 10 iterações e retornar 5 por convergir, e chegar ao valor proximo');
-  //F=[[0, -0.5][-0.5, 0]] e d=[0.5, 1.5]
-  //x=[1, 1]
   Matriz := NovaMatriz('[[2, -1][1, 2]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[1, 3]');
   xResultado := NovoVetor('[0.9688, 1.0313]');
-  RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 20, 2, 2, 0.1);
+  RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 10, 2, 2, 0.1);
   ASSERT(VetorEquals(x, xResultado, 2));
   writeln(RetornoJacobi);
   ASSERT(RetornoJacobi = 5);
