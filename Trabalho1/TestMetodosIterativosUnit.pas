@@ -253,7 +253,7 @@ begin
   RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 0, 3, 3, 0.001);
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
-
+end;
 
 end.
 
