@@ -1,6 +1,6 @@
 program Trabalho1;
 
-uses TestUnit, MatrizUnit, TestReducaoGaussUnit, TestMetodosIterativosUnit;
+uses TestUnit, MatrizUnit, ReducaoGaussUnit, MetodosIterativosUnit;
 
 var
   Tamanho, Iteracoes, RetornoIterativo : integer;
