@@ -99,7 +99,7 @@ begin
   x := xInicial;
   MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
 
-  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) then
+  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) or iteracoes = 0 then
   begin
     GaussSeidel := -1;
     exit();
@@ -141,7 +141,7 @@ begin
   x := xInicial;
   MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
 
-  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) then
+  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) or iteracoes = 0 then
   begin
     Jacobi := -1;
     exit();
