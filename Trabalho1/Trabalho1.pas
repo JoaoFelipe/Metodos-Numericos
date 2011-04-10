@@ -7,7 +7,7 @@ var
   Precisao : real;
   Escolha : integer;
   Coeficientes, CoeficientesTemp : TMatriz;
-  TermosIndependentes, TermosIndependentesTemp, Resultado : TVetor;
+  TermosIndependentes, TermosIndependentesTemp, Resultado, AproxInicial : TVetor;
   rodando: boolean;
 
 procedure LerMatriz;
@@ -52,6 +52,7 @@ begin
     //Esqueci como usar case e não estou com vontade de procurar agora
     CoeficientesTemp := Coeficientes;
     TermosIndependentesTemp := TermosIndependentes;
+    AproxInicial := NovoVetor('[0, 0, 0]');
     if Escolha = 1 then
     begin
       Resultado := ResolucaoCompletaGauss(CoeficientesTemp, TermosIndependentesTemp, Tamanho, Tamanho);
@@ -63,7 +64,7 @@ begin
         readln(Iteracoes);
         writeln('Digite a precisão (ex 0.1)');
         readln(Precisao);
-        RetornoIterativo := Jacobi(Resultado, NovoVetor('[0, 0, 0]'), CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
+        RetornoIterativo := Jacobi(Resultado, AproxInicial, CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
         if RetornoIterativo = -1 then
         writeln('Não é possível resolver, o sistema não satisfaz as condições suficientes de convergencia')
         else begin
@@ -80,7 +81,7 @@ begin
           readln(Iteracoes);
           writeln('Digite a precisão (ex 0.1)');
           readln(Precisao);
-          RetornoIterativo := GaussSeidel(Resultado, NovoVetor('[0, 0, 0]'), CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
+          RetornoIterativo := GaussSeidel(Resultado, AproxInicial, CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
           if RetornoIterativo = -1 then
           writeln('Não é possível resolver, o sistema não satisfaz as condições suficientes de convergencia')
           else begin
