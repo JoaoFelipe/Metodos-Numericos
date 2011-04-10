@@ -3,6 +3,7 @@ unit MetodosIterativosUnit;
 
 interface
   uses MatrizUnit;
+  type TIterativo = function(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 
   function ConvergeCriterioLinhas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
   function ConvergeCriterioColunas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
