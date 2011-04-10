@@ -97,6 +97,7 @@ var
   d: TVetor;
   delta : real;
 begin  
+  new(pX);
   iter := 0;
   x := xInicial;
   MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
