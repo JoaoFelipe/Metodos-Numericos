@@ -12,6 +12,7 @@ interface
   procedure MostrarMatriz(matriz: TMatriz; linhas, colunas: integer);
   procedure MostrarVetor(Vetor: TVetor; Colunas: integer);
   procedure MostrarSistema(matriz: TMatriz; vetor: TVetor; linhas, colunas: integer);
+  procedure MostrarResultados(vetor: TVetor; linhas: integer);
 
   procedure Mostrar2Matrizes(matriz1, matriz2: TMatriz; linhas, colunas: integer);
   procedure Mostrar2Vetores(vetor1, vetor2: TVetor; Colunas: integer);
@@ -121,6 +122,13 @@ begin
     end;
     writeln('{', temp, FormatFloat(FloatFormated,matriz[i,colunas]), 'x', i, colunas, ' = ', FormatFloat(FloatFormated,vetor[i]));
   end;
+end;
+
+procedure MostrarResultados(Vetor: TVetor; Linhas: integer);
+var i: integer;
+begin
+  for i := 1 to colunas do
+    writeln('x', i, ' = ', FormatFloat(FloatFormated, Vetor[i]));
 end;
 
 procedure Mostrar2Matrizes(matriz1, matriz2: TMatriz; linhas, colunas: integer);
