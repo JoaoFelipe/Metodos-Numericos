@@ -40,6 +40,7 @@ end;
 
 procedure Iterativo(metodo:String);
 begin 
+  AproxInicial := NovoVetor('[0, 0, 0]');
   writeln('Digite o numero máximo de iterações');
   readln(Iteracoes);
   writeln('Digite a precisão (ex 0.1)');
@@ -80,16 +81,14 @@ begin
     //Esqueci como usar case e não estou com vontade de procurar agora
     CoeficientesTemp := Coeficientes;
     TermosIndependentesTemp := TermosIndependentes;
-    AproxInicial := NovoVetor('[0, 0, 0]');
-    if Escolha = 1 then
-      RedGauss
-      else if Escolha = 2 then 
-        Iterativo('Jacobi')
-        else if Escolha = 3 then
-          Iterativo('GaussSeidel')
-          else if Escolha = 4 then
-            LerMatriz
-            else if Escolha = 5 then
-              rodando := false;
+    
+    case Escolha of
+      1: RedGauss;
+      2: Iterativo('Jacobi');
+      3: Iterativo('GaussSeidel');
+      4: LerMatriz;
+      5: rodando := false;
+    end;
+
   end;
 end.
