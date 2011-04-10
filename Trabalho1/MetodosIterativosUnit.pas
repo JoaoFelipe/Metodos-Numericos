@@ -4,6 +4,9 @@ unit MetodosIterativosUnit;
 interface
   uses MatrizUnit;
 
+  type
+    PVetor = ^TVetor;
+
   function ConvergeCriterioLinhas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
   function ConvergeCriterioColunas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
   function ConvergeCriterioSassenfeld(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
@@ -12,7 +15,7 @@ interface
   procedure MontarSistema(var F: TMatriz; var d: TVetor; Matriz: TMatriz; Vetor: TVetor; Linhas, Colunas:integer);
   function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
   function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-  function MetodosIterativos(var x, xInicial: TVetor; pX : ^TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
+  function MetodosIterativos(var x, xInicial: TVetor; pX : PVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 const
   SemiEpsilon: real = 0.9;
  
