@@ -1,2 +1,2 @@
 #!/bin/bash
-rm *.o *.ppu *.exe
+rm *.o *.ppu 
