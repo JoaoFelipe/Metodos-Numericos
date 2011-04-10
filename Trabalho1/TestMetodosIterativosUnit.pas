@@ -240,10 +240,10 @@ begin
   //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] 
   //d=[1, 1, 1]
   //x=[0.5904, 0.6476, 0.5809]
-  Matriz := NovaMatriz('[[-8, 8, 1][0, -4, 4.5][0, 0, 1.125]]');
+  Matriz := NovaMatriz('[[5, 2, 1][3, 1, 4][1, 1, 3]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
-  Vetor := NovoVetor('[-8, -4, 9]');
-  xResultado := NovoVetor('[-15.694444, -14.75, -11.55555]');
+  Vetor := NovoVetor('[0, -7, 5]');
+  xResultado := NovoVetor('[-5.38462, 14.07692, -1.23077]');
   RetornoGaussSeidel := GaussSeidel(x, AproximacaoInicial, Matriz, Vetor, 20, 3, 3, 0.001);
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoGaussSeidel > 0);
