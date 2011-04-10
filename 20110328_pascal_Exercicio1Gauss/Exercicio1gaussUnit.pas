@@ -16,7 +16,8 @@ interface
   procedure ReducaoDeGauss(var Matriz: TMatriz; var Coeficientes: TVetor; Linhas, Colunas:integer);
   function ResolucaoGauss(Matriz: TMatriz; Coeficientes: TVetor; Linhas:integer): TVetor;
   procedure MostrarMatriz(matriz: TMatriz; linhas, colunas: integer);
-    procedure MostrarVetor(Vetor: TVetor; Colunas: integer);
+  procedure MostrarVetor(Vetor: TVetor; Colunas: integer);
+  function ResolucaoCompletaGauss(Matriz: TMatriz; Coeficientes: TVetor; Linhas, Colunas:integer): TVetor;
 implementation
   
 Uses SysUtils;
@@ -175,10 +176,7 @@ begin
       Matriz[i, j] := 0;
       Matriz := OperarLinha(Matriz, i, j, Multiplicador, j + 1, Colunas);
       Coeficientes[i] := Coeficientes[i] - Multiplicador*Coeficientes[j];
-      writeln(multiplicador);
     end;
-    MostrarMatriz(Matriz, Linhas, Colunas); writeln('->');
-    MostrarVetor(Coeficientes, Linhas); writeln(':')
   end;  
 end;
 
@@ -197,6 +195,13 @@ begin
     retorno[i] := (Coeficientes[i] - soma) / Matriz[i, i];
   end;
   ResolucaoGauss := retorno;
+end;
+
+
+function ResolucaoCompletaGauss(Matriz: TMatriz; Coeficientes: TVetor; Linhas, Colunas:integer): TVetor;
+begin
+  ReducaoDeGauss(Matriz, Coeficientes, Linhas, Colunas);
+  ResolucaoCompletaGauss := ResolucaoGauss(Matriz, Coeficientes, Linhas);
 end;
 
 end.
