@@ -253,6 +253,15 @@ begin
   RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 0, 3, 3, 0.001);
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
+
+  InitTest('A matriz [[0.4, 0.1, 0.3][0.2, 0.5, 0.1][0.2, 0.3, 0.9]] com vetor [1, 1, 1] deve retornar -1 por NÃO convergir');
+  //F=[[0, -0.25, -0.75][-0.4, 0, -0.2][-0.22222, -0.33333, 0]]
+  matriz := NovaMatriz('[[0.4, 0.1, 0.3][0.2, 0.5, 0.1][0.2, 0.3, 0.9]]');
+  AproximacaoInicial := NovoVetor('[0, 0, 0]');
+  Vetor := NovoVetor('[1, 1, 1]');
+  xResultado := NovoVetor('[0, 0, 0]');
+  RetornoGaussSeidel := GaussSeidel(x, AproximacaoInicial, Matriz, Vetor, 0, 3, 3, 0.001);
+  ASSERT(RetornoGaussSeidel = -1);
 end;
 
 end.
