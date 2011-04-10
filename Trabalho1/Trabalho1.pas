@@ -37,7 +37,7 @@ begin
   LerMatriz;
   rodando := true;
   while rodando do
-  begin(
+  begin
     writeln;
     writeln('Resolvendo o seguinte sistema');
     MostrarSistema(Coeficientes, TermosIndependentes, Tamanho, Tamanho);
