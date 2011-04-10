@@ -127,7 +127,7 @@ end;
 procedure MostrarResultados(Vetor: TVetor; Linhas: integer);
 var i: integer;
 begin
-  for i := 1 to colunas do
+  for i := 1 to Linhas do
     writeln('x', i, ' = ', FormatFloat(FloatFormated, Vetor[i]));
 end;
 
