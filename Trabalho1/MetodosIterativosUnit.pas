@@ -12,7 +12,7 @@ interface
   procedure MontarSistema(var F: TMatriz; var d: TVetor; Matriz: TMatriz; Vetor: TVetor; Linhas, Colunas:integer);
   function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
   function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-  function MetodosIterativos(var x, xInicial: TVetor;var pX : TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
+  function MetodosIterativos(var x, xInicial: TVetor; var pX : TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 const
   SemiEpsilon: real = 0.9;
  
