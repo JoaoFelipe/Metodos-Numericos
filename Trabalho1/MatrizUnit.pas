@@ -11,6 +11,7 @@ interface
 
   procedure MostrarMatriz(matriz: TMatriz; linhas, colunas: integer);
   procedure MostrarVetor(Vetor: TVetor; Colunas: integer);
+  procedure MostrarSistema(matriz: TMatriz; vetor: TVetor; linhas, colunas: integer);
 
   procedure Mostrar2Matrizes(matriz1, matriz2: TMatriz; linhas, colunas: integer);
   procedure Mostrar2Vetores(vetor1, vetor2: TVetor; Colunas: integer);
@@ -103,6 +104,23 @@ begin
   for i := 1 to colunas-1 do
     temp := temp + FormatFloat(FloatFormated, Vetor[i]) + ', ';
   writeln('[', temp, FormatFloat(FloatFormated, Vetor[Colunas]) , ']');
+end;
+
+procedure MostrarSistema(matriz: TMatriz; vetor: TVetor; linhas, colunas: integer);
+var i, j: integer;
+temp: string;
+begin
+  for i := 1 to linhas do
+  begin
+    temp := '';
+    for j := 1 to colunas-1 do
+    begin
+      temp := temp + FormatFloat(FloatFormated,matriz[i,j]);
+      if FormatFloat(FloatFormated,matriz[i,j]) >= 0 then
+        temp := temp + ' + ';
+    end;
+    writeln('{', temp, FormatFloat(FloatFormated,matriz[i,colunas]) , ' = ', FormatFloat(FloatFormated,vetor[i]));
+  end;
 end;
 
 procedure Mostrar2Matrizes(matriz1, matriz2: TMatriz; linhas, colunas: integer);
