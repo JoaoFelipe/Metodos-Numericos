@@ -4,8 +4,7 @@ unit MetodosIterativosUnit;
 interface
   uses MatrizUnit;
 
-  type
-    PVetor = ^array [0..100] of real;
+  type PVetor = ^array [0..100] of real;
 
   function ConvergeCriterioLinhas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
   function ConvergeCriterioColunas(Matriz: TMatriz; Linhas, Colunas:integer; epsilon: real): boolean;
