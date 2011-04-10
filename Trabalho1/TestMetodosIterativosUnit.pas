@@ -260,7 +260,7 @@ begin
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[1, 1, 1]');
   xResultado := NovoVetor('[0, 0, 0]');
-  RetornoGaussSeidel := GaussSeidel(x, AproximacaoInicial, Matriz, Vetor, 0, 3, 3, 0.001);
+  RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 0, 3, 3, 0.001);
   ASSERT(RetornoGaussSeidel = -1);
 end;
 
