@@ -33,24 +33,6 @@ begin
 end;
 
 
-procedure ExecutarIterativo(func: TIterativo);
-begin
-  writeln('Digite o numero máximo de iterações');
-  readln(Iteracoes);
-  writeln('Digite a precisão (ex 0.1)');
-  readln(Precisao);
-  RetornoIterativo := func(Resultado, NovoVetor('[0, 0, 0]'), CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
-  if RetornoIterativo = -1 then
-    writeln('Não é possível resolver, o sistema não satisfaz as condições suficientes de convergencia')
-  else begin
-    if RetornoIterativo = 0 then
-      writeln('O numero de iteracoes Máximo não foi suficiente para definir o resultado com a precisao definida')
-    else
-      writeln('A seguinte solucao foi encontrada com ', RetornoIterativo, ' iterações');
-      MostrarResultados(Resultado, Tamanho);
-  end;
-end;
-
 begin
   LerMatriz;
   rodando := true;
@@ -72,17 +54,50 @@ begin
     TermosIndependentesTemp := TermosIndependentes;
     if Escolha = 1 then
     begin
-      
       Resultado := ResolucaoCompletaGauss(CoeficientesTemp, TermosIndependentesTemp, Tamanho, Tamanho);
       MostrarResultados(Resultado, Tamanho);
-    end else if Escolha = 2 then 
-      ExecutarIterativo(@Jacobi)
-    else if Escolha = 3 then
-      ExecutarIterativo(@GaussSeidel)
-    else if Escolha = 4 then
-      LerMatriz
-    else
-      rodando := false;
-
+    end 
+      else if Escolha = 2 then 
+      begin 
+        writeln('Digite o numero máximo de iterações');
+        readln(Iteracoes);
+        writeln('Digite a precisão (ex 0.1)');
+        readln(Precisao);
+        RetornoIterativo := Jacobi(Resultado, NovoVetor('[0, 0, 0]'), CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
+        if RetornoIterativo = -1 then
+        writeln('Não é possível resolver, o sistema não satisfaz as condições suficientes de convergencia')
+        else begin
+        if RetornoIterativo = 0 then
+          writeln('O numero de iteracoes Máximo não foi suficiente para definir o resultado com a precisao definida')
+        else
+          writeln('A seguinte solucao foi encontrada com ', RetornoIterativo, ' iterações');
+          MostrarResultados(Resultado, Tamanho);
+        end;
+      end 
+        else if Escolha = 3 then
+        begin
+          writeln('Digite o numero máximo de iterações');
+          readln(Iteracoes);
+          writeln('Digite a precisão (ex 0.1)');
+          readln(Precisao);
+          RetornoIterativo := GaussSeidel(Resultado, NovoVetor('[0, 0, 0]'), CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
+          if RetornoIterativo = -1 then
+          writeln('Não é possível resolver, o sistema não satisfaz as condições suficientes de convergencia')
+          else begin
+          if RetornoIterativo = 0 then
+            writeln('O numero de iteracoes Máximo não foi suficiente para definir o resultado com a precisao definida')
+          else
+            writeln('A seguinte solucao foi encontrada com ', RetornoIterativo, ' iterações');
+            MostrarResultados(Resultado, Tamanho);
+          end;
+        end 
+          else if Escolha = 4 then
+          begin
+            LerMatriz;
+          end
+            else if Escolha = 5 then
+            begin 
+              rodando := false;
+            end;
   end;
 end.
