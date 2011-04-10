@@ -14,9 +14,9 @@ begin
   writeln('Digite o numero de incognitas');
   readln(Tamanho);
 
-  for i := 1 to tamanho do
+  for i := 1 to Tamanho do
   begin
-    for j := 1 to tamanho do
+    for j := 1 to Tamanho do
     begin
       writeln('Digite o coeficiente A',i,j);
       readln(Coeficientes[i,j]);
@@ -24,10 +24,12 @@ begin
     writeln('Digite o termo independente B',i);
     readln(TermosIndependentes[i]);
   end;
-
 end;
+
+
+
 
 begin
   LerMatriz;
-  MostrarMatriz(Coeficientes, tamanho, tamanho);
+  MostrarSistema(Coeficientes, TermosIndependentes, Tamanho, Tamanho);
 end.
