@@ -280,7 +280,6 @@ begin
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
-  xResultado := NovoVetor('[1, 1, 1]');
   xResultado := NovoVetor('[0.3334, 0.4, 0.3334]');
   RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 2, 3, 3, 0.001);
   ASSERT(VetorEquals(x, xResultado, 3));
