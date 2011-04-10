@@ -21,6 +21,8 @@ begin
       writeln('Digite o coeficiente A',i,j);
       readln(Coeficientes[i,j]);
     end;
+    writeln('Digite o termo independente B',i);
+    readln(TermosIndependentes[i]);
   end;
 
 end;
