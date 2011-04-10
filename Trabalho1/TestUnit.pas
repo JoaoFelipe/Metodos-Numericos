@@ -15,8 +15,6 @@ interface
   procedure Pass();
   procedure WriteML(msg: string);
 
-
-
 const
   EpsilonDefault : real = 0.0001;
 
