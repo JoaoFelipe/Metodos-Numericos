@@ -291,7 +291,7 @@ begin
   Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[3, 5, 9]');
-  xResultado := NovoVetor('[0.7555, 0.5481, 0.4766]');
+  xResultado := NovoVetor('[0.7555, 0.7999, 0.7481]');
   RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 3, 3, 3, 0.001);
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
