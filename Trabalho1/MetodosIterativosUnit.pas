@@ -116,7 +116,10 @@ begin
     begin
       x[i] := d[i];
       for j := 1 to Colunas do
-        x[i]:= x[i] + F[i, j]*pX^[j];
+      begin
+        delta := pX[j];
+        x[i]:= x[i] + F[i, j]*delta;
+      end;
     end;
 
     delta := 0;
