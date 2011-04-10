@@ -91,7 +91,7 @@ begin
   end;
 end;
 
-function MetodosIterativos(var x, xInicial: TVetor; pX : ^TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
+function MetodosIterativos(var x, xInicial: TVetor; pX : PVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 var
   i, j, iter: integer;
   F: TMatriz;
