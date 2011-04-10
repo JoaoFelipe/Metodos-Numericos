@@ -14,7 +14,7 @@ interface
   procedure MontarSistema(var F: TMatriz; var d: TVetor; Matriz: TMatriz; Vetor: TVetor; Linhas, Colunas:integer);
   function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
   function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-  function MetodosIterativos(var x, xInicial: TVetor; pX : PVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
+  function MetodosIterativos(var x, xInicial: TVetor; var pX : TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 const
   SemiEpsilon: real = 0.9;
  
@@ -90,7 +90,7 @@ begin
   end;
 end;
 
-function MetodosIterativos(var x, xInicial: TVetor; pX : PVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
+function MetodosIterativos(var x, xInicial: TVetor; var pX : TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 var
   i, j, iter: integer;
   F: TMatriz;
@@ -116,10 +116,7 @@ begin
     begin
       x[i] := d[i];
       for j := 1 to Colunas do
-      begin
-        delta := pX^[j];
-        x[i]:= x[i] + F[i, j]*delta;
-      end;
+        x[i]:= x[i] + F[i, j]*pX[j];
     end;
 
     delta := 0;
