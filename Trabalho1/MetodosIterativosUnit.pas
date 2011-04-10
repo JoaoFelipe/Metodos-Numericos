@@ -125,9 +125,9 @@ begin
   end;
 
   if (delta >= epsilon) then
-    GaussSeidel := 0
+    GaussSeidel := iter
   else
-    GaussSeidel := 1;
+    GaussSeidel := 0;
 end;
 
 function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
@@ -167,9 +167,9 @@ begin
   end;
 
   if (delta >= epsilon) then
-    Jacobi := 0
+    Jacobi := iter
   else
-    Jacobi := 1;
+    Jacobi := 0;
 end;
 
    
