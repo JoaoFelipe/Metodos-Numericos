@@ -119,7 +119,7 @@ begin
       if matriz[i,j+1] >= 0 then
         temp := temp + '+';
     end;
-    writeln('{', temp, FormatFloat(FloatFormated,matriz[i,colunas]) , ' = ', FormatFloat(FloatFormated,vetor[i]));
+    writeln('{', temp, FormatFloat(FloatFormated,matriz[i,colunas]), 'x', i, j, ' = ', FormatFloat(FloatFormated,vetor[i]));
   end;
 end;
 
