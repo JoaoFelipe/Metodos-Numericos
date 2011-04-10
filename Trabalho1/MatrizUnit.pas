@@ -117,7 +117,7 @@ begin
     begin
       temp := temp + FormatFloat(FloatFormated,matriz[i,j]);
       if matriz[i,j+1] >= 0 then
-        temp := temp + ' + ';
+        temp := temp + '+';
     end;
     writeln('{', temp, FormatFloat(FloatFormated,matriz[i,colunas]) , ' = ', FormatFloat(FloatFormated,vetor[i]));
   end;
