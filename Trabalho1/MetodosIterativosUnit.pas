@@ -12,7 +12,6 @@ interface
   procedure MontarSistema(var F: TMatriz; var d: TVetor; Matriz: TMatriz; Vetor: TVetor; Linhas, Colunas:integer);
   function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
   function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-  function MetodoIterativo(var x, xInicial, usado: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 
 const
   SemiEpsilon: real = 0.9;
@@ -96,40 +95,39 @@ var
   d: TVetor;
   delta : real;
 begin  
-//  iter := 0;
-//  x := xInicial;
-//  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
-//
-//  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) then
-//  begin
-//    GaussSeidel := -1;
-//    exit();
-//  end;
-//
-//  delta := epsilon;
-//  while (iter < Iteracoes) and (delta >= epsilon) do
-//  begin
-//
-//    for i := 1 to Linhas do
-//    begin
-//      x[i] := d[i];
-//      for j := 1 to Colunas do
-//        x[i]:= x[i] + F[i, j]*x[j];
-//    end;
-//
-//    delta := 0;
-//    for i := 1 to Linhas do
-//      if ABS(x[i] - xInicial[i]) > delta then
-//        delta := ABS(x[i] - xInicial[i]);
-//    xInicial := x;
-//    inc(iter);
-//  end;
-//
-//  if (delta >= epsilon) then
-//    GaussSeidel := 0
-//  else
-//    GaussSeidel := 1;
-  GaussSeidel := MetodoIterativo(x, xInicial, @x, Matriz, Vetor, Iteracoes, Linhas, Colunas, epsilon);
+  iter := 0;
+  x := xInicial;
+  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
+
+  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) then
+  begin
+    GaussSeidel := -1;
+    exit();
+  end;
+
+  delta := epsilon;
+  while (iter < Iteracoes) and (delta >= epsilon) do
+  begin
+
+    for i := 1 to Linhas do
+    begin
+      x[i] := d[i];
+      for j := 1 to Colunas do
+        x[i]:= x[i] + F[i, j]*x[j];
+    end;
+
+    delta := 0;
+    for i := 1 to Linhas do
+      if ABS(x[i] - xInicial[i]) > delta then
+        delta := ABS(x[i] - xInicial[i]);
+    xInicial := x;
+    inc(iter);
+  end;
+
+  if (delta >= epsilon) then
+    GaussSeidel := 0
+  else
+    GaussSeidel := 1;
 end;
 
 function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
@@ -172,50 +170,7 @@ begin
 //    GaussSeidel := 0
 //  else
 //    GaussSeidel := 1;
-  Jacobi := MetodoIterativo(x, xInicial, @x, Matriz, Vetor, Iteracoes, Linhas, Colunas, epsilon);
 end;
 
-function MetodoIterativo(var x, xInicial, usado: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-var
-  i, j, iter: integer;
-  F: TMatriz;
-  d: TVetor;
-  delta : real;
-begin  
-  iter := 0;
-  x := xInicial;
-  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
-
-  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) then
-  begin
-    MetodoIterativo := -1;
-    exit();
-  end;
-
-  delta := epsilon;
-  while (iter < Iteracoes) and (delta >= epsilon) do
-  begin
-
-    for i := 1 to Linhas do
-    begin
-      x[i] := d[i];
-      for j := 1 to Colunas do
-        x[i]:= x[i] + F[i, j]*usado[j];
-    end;
-
-    delta := 0;
-    for i := 1 to Linhas do
-      if ABS(x[i] - xInicial[i]) > delta then
-        delta := ABS(x[i] - xInicial[i]);
-    xInicial := x;
-    inc(iter);
-  end;
-
-  if (delta >= epsilon) then
-    MetodoIterativo := 0
-  else
-    MetodoIterativo := 1;
-
-end;
    
 end.
