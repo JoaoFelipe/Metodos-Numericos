@@ -6,7 +6,7 @@ var
   Tamanho : integer;
   Valor : real;
   Coeficientes, CoeficientesTemp : TMatriz;
-  TermosIndependentes, TermosIndependentes : TVetor;
+  TermosIndependentes, TermosIndependentesTemp : TVetor;
 
 procedure LerMatriz;
 var i, j: integer;
