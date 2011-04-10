@@ -348,6 +348,7 @@ begin
   xResultado := NovoVetor('[1.008, 0.996]');
   RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 10, 2, 2, 0.1);
   ASSERT(VetorEquals(x, xResultado, 2));
+  writeln(RetornoJacobi);
   ASSERT(RetornoJacobi = 4);
 
 end;
