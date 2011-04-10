@@ -12,7 +12,7 @@ interface
   procedure MontarSistema(var F: TMatriz; var d: TVetor; Matriz: TMatriz; Vetor: TVetor; Linhas, Colunas:integer);
   function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
   function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
-
+  function MetodosIterativos(var x, xInicial: TVetor; pX : ^TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 const
   SemiEpsilon: real = 0.9;
  
@@ -88,7 +88,7 @@ begin
   end;
 end;
 
-function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
+function MetodosIterativos(var x, xInicial: TVetor; pX : ^TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 var
   i, j, iter: integer;
   F: TMatriz;
@@ -101,7 +101,7 @@ begin
 
   if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) then
   begin
-    GaussSeidel := -1;
+    MetodosIterativos := -1;
     exit();
   end;
 
@@ -125,9 +125,52 @@ begin
   end;
 
   if (delta >= epsilon) then
-    GaussSeidel := 0
+    MetodosIterativos := 0
   else
-    GaussSeidel := iter;
+    MetodosIterativos := iter;
+end;
+
+function GaussSeidel(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
+var
+  i, j, iter: integer;
+  F: TMatriz;
+  d: TVetor;
+  delta : real;
+begin  
+  MetodosIterativos(x, xInicial, @x, Matriz, Vetor, Linhas, Colunas, epsilon);
+//  iter := 0;
+//  x := xInicial;
+//  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
+//
+//  if (not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon))) then
+//  begin
+//    GaussSeidel := -1;
+//    exit();
+//  end;
+//
+//  delta := epsilon;
+//  while (iter < Iteracoes) and (delta >= epsilon) do
+//  begin
+//
+//    for i := 1 to Linhas do
+//    begin
+//      x[i] := d[i];
+//      for j := 1 to Colunas do
+//        x[i]:= x[i] + F[i, j]*x[j];
+//    end;
+//
+//    delta := 0;
+//    for i := 1 to Linhas do
+//      if ABS(x[i] - xInicial[i]) > delta then
+//        delta := ABS(x[i] - xInicial[i]);
+//    xInicial := x;
+//    inc(iter);
+//  end;
+//
+//  if (delta >= epsilon) then
+//    GaussSeidel := 0
+//  else
+//    GaussSeidel := iter;
 end;
 
 function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
