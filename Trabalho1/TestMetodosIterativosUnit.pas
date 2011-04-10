@@ -240,7 +240,7 @@ begin
   Matriz := NovaMatriz('[[2, -1][1, 2]]');
   AproximacaoInicial := NovoVetor('[0, 0, 0]');
   Vetor := NovoVetor('[1, 3]');
-  xResultado := NovoVetor('[1.008, 0.996]');
+  xResultado := NovoVetor('[1.0078 0.9961]');
   RetornoGaussSeidel := GaussSeidel(x, AproximacaoInicial, Matriz, Vetor, 10, 2, 2, 0.1);
   ASSERT(VetorEquals(x, xResultado, 2));
   ASSERT(RetornoGaussSeidel = 4);
