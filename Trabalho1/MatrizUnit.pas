@@ -115,7 +115,7 @@ begin
     temp := '';
     for j := 1 to colunas-1 do
     begin
-      temp := temp + FormatFloat(FloatFormated,matriz[i,j]);
+      temp := temp + FormatFloat(FloatFormated,matriz[i,j]) + 'x' + inttostr(i) + inttostr(j) + ' ';
       if matriz[i,j+1] >= 0 then
         temp := temp + '+';
     end;
