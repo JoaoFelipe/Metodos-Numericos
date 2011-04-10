@@ -306,6 +306,17 @@ begin
   RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 4, 3, 3, 0.001);
   ASSERT(VetorEquals(x, xResultado, 3));
   ASSERT(RetornoJacobi = 0);
+
+  InitTest('A matriz [[3, 1, 1][2, 5, 1][2, 4, 9]] com vetor [3, 5, 9] e aproximação [0, 0, 0] deve gerar x=[0.5913, 0.6483, 0.5817] após 16 iterações e retornar 0 por convergir, mas não chegar ao valor proximo');
+  //F=[[0, -0.33333, -0.33333][-0.4, 0, -0.2][-0.22222, -0.44444, 0]] e d=[1, 1, 1]
+  //x=[0.5904, 0.6476, 0.5809]
+  Matriz := NovaMatriz('[[3, 1, 1][2, 5, 1][2, 4, 9]]');
+  AproximacaoInicial := NovoVetor('[0, 0, 0]');
+  Vetor := NovoVetor('[3, 5, 9]');
+  xResultado := NovoVetor('[0.5913, 0.6483, 0.5817]');
+  RetornoJacobi := Jacobi(x, AproximacaoInicial, Matriz, Vetor, 16, 3, 3, 0.001);
+  ASSERT(VetorEquals(x, xResultado, 3));
+  ASSERT(RetornoJacobi = 0);
 end;
 
 end.
