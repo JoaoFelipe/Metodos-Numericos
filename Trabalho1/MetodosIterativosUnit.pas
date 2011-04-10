@@ -137,39 +137,39 @@ var
   d: TVetor;
   delta : real;
 begin  
-//  iter := 0;
-//  x := xInicial;
-//  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
-//
-//  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) then
-//  begin
-//    GaussSeidel := -1;
-//    exit();
-//  end;
-//
-//  delta := epsilon;
-//  while (iter < Iteracoes) and (delta >= epsilon) do
-//  begin
-//
-//    for i := 1 to Linhas do
-//    begin
-//      x[i] := d[i];
-//      for j := 1 to Colunas do
-//        x[i]:= x[i] + F[i, j]*x[j];
-//    end;
-//
-//    delta := 0;
-//    for i := 1 to Linhas do
-//      if ABS(x[i] - xInicial[i]) > delta then
-//        delta := ABS(x[i] - xInicial[i]);
-//    xInicial := x;
-//    inc(iter);
-//  end;
-//
-//  if (delta >= epsilon) then
-//    GaussSeidel := 0
-//  else
-//    GaussSeidel := 1;
+  iter := 0;
+  x := xInicial;
+  MontarSistema(F, d, Matriz, Vetor, Linhas, Colunas);
+
+  if not (Converge(Matriz, Linhas, Colunas, epsilon) or ConvergeCriterioSassenfeld(F, Linhas, Colunas, epsilon)) then
+  begin
+    Jacobi := -1;
+    exit();
+  end;
+
+  delta := epsilon;
+  while (iter < Iteracoes) and (delta >= epsilon) do
+  begin
+
+    for i := 1 to Linhas do
+    begin
+      x[i] := d[i];
+      for j := 1 to Colunas do
+        x[i]:= x[i] + F[i, j]*xInicial[j];
+    end;
+
+    delta := 0;
+    for i := 1 to Linhas do
+      if ABS(x[i] - xInicial[i]) > delta then
+        delta := ABS(x[i] - xInicial[i]);
+    xInicial := x;
+    inc(iter);
+  end;
+
+  if (delta >= epsilon) then
+    Jacobi := 0
+  else
+    Jacobi := 1;
 end;
 
    
