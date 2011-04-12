@@ -42,7 +42,7 @@ procedure Iterativo(metodo:String);
 var i: integer;
 begin 
   for i := 1 to Tamanho do
-   AproxInicial[i] := 0;
+    AproxInicial[i] := 0;
   writeln('Digite o numero máximo de iterações');
   readln(Iteracoes);
   writeln('Digite a precisão (ex 0.1)');
