@@ -14,7 +14,7 @@ interface
   function Jacobi(var x, xInicial: TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
   function MetodosIterativos(var x, xInicial: TVetor; var pX : TVetor; Matriz: TMatriz; Vetor: TVetor; Iteracoes, Linhas, Colunas: integer; epsilon: real):integer;
 const
-  SemiEpsilon: real = 0.9;
+  SemiEpsilon: real = 0.9; //Em um teste, estava acusando 1 < 1. Esse semiEpsilon serve para garantir a comparação de floats
  
 
 implementation
