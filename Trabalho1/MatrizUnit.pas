@@ -27,7 +27,7 @@ interface
 
 const
   epsilon: real = 0.0001;
-  FloatFormated: string = '0.0000';
+  FloatFormated: string = '0.0001';
 
 implementation
 

@@ -1,6 +1,6 @@
 program Trabalho1;
 
-uses MatrizUnit, ReducaoGaussUnit, MetodosIterativosUnit;
+uses MatrizUnit, ReducaoGaussUnit, MetodosIterativosUnit, SysUtils;
 
 var
   Tamanho, Iteracoes, RetornoIterativo : integer;
@@ -45,8 +45,6 @@ begin
     AproxInicial[i] := 0;
   writeln('Digite o numero máximo de iterações');
   readln(Iteracoes);
-  writeln('Digite a precisão (ex 0.1)');
-  readln(Precisao);
   
   if metodo = 'Jacobi' then
     RetornoIterativo := Jacobi(Resultado, AproxInicial, CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao)
@@ -64,7 +62,16 @@ begin
   end;
 end;
 
+procedure DefinirPrecisao;
 begin
+  writeln('Digite a precisão (ex 0.1)');
+  readln(Precisao);
+  FloatFormated := FloatToStr(Precisao);  
+  FloatFormated[length(FloatFormated)] := '0';
+end;
+
+begin
+  DefinirPrecisao;
   LerMatriz;
   rodando := true;
   while rodando do
@@ -78,7 +85,8 @@ begin
     writeln('2- Jacobi');
     writeln('3- Gauss-Seidel');
     writeln('4- Desejo escolher outro sistema');
-    writeln('5- Sair');
+    writeln('5- Alterar Precisao');
+    writeln('6- Sair');
     readln(Escolha);
 
     CoeficientesTemp := Coeficientes;
@@ -89,7 +97,8 @@ begin
       2: Iterativo('Jacobi');
       3: Iterativo('GaussSeidel');
       4: LerMatriz;
-      5: rodando := false;
+      5: DefinirPrecisao;
+      6: rodando := false;
     end;
 
   end;
