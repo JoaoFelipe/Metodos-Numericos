@@ -43,7 +43,7 @@ var i: integer;
 begin 
   for i := 1 to Tamanho do
     AproxInicial[i] := 0;
-  writeln('Digite o numero máximo de iterações');
+  writeln('Digite o numero maximo de iteracoes');
   readln(Iteracoes);
   
   if metodo = 'Jacobi' then
@@ -52,22 +52,29 @@ begin
     RetornoIterativo := GaussSeidel(Resultado, AproxInicial, CoeficientesTemp, TermosIndependentesTemp, Iteracoes, Tamanho, Tamanho, Precisao);
      
   if RetornoIterativo = -1 then
-    writeln('Não é possível resolver, o sistema não satisfaz as condições suficientes de convergencia')
+    writeln('Nao eh possivel resolver, o sistema nao satisfaz as condicoes suficientes de convergencia')
   else begin
     if RetornoIterativo = 0 then
-      writeln('O numero de iteracoes Máximo não foi suficiente para definir o resultado com a precisao definida')
+      writeln('O numero de iteracoes Maximo nao foi suficiente para definir o resultado com a precisao definida')
     else
-      writeln('A seguinte solucao foi encontrada com ', RetornoIterativo, ' iterações');
+      writeln('A seguinte solucao foi encontrada com ', RetornoIterativo, ' iteracoes');
     MostrarResultados(Resultado, Tamanho);
   end;
 end;
 
 procedure DefinirPrecisao;
+var i:integer;
 begin
-  writeln('Digite a precisão (ex 0.1)');
+  writeln('Digite a precisao (ex 0.1)');
   readln(Precisao);
   FloatFormated := FloatToStr(Precisao);  
-  FloatFormated[length(FloatFormated)] := '0';
+	for i := 1 to length(FloatFormated) do
+	begin
+		if (FloatFormated[i] = ',') or (FloatFormated[i] = '.') then FloatFormated[i] := '.'
+			else if FloatFormated[i] <> '0' then FloatFormated[i] := '0';
+	end; 
+  writeln(FloatFormated);
+
 end;
 
 begin
@@ -81,7 +88,7 @@ begin
     MostrarSistema(Coeficientes, TermosIndependentes, Tamanho, Tamanho);
     writeln;
     writeln('Por que metodo você deseja resolver?');
-    writeln('1- Redução de Gauss');
+    writeln('1- Reducao de Gauss');
     writeln('2- Jacobi');
     writeln('3- Gauss-Seidel');
     writeln('4- Desejo escolher outro sistema');
