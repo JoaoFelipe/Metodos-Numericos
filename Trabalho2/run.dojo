@@ -1,0 +1,1 @@
+fpc TestTrabalho2.pas -TLINUX -oTestTrabalho2.test -Sm && ./TestTrabalho2.test
