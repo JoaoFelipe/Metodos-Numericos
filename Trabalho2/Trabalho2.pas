@@ -65,7 +65,7 @@ begin
     writeln(temp);
     writeln;
   
-    writeln('O que você deseja fazer agora?');
+    writeln('O que voce deseja fazer agora?');
     writeln('1-Substituir em um ponto P(a)');
     writeln('2-Voltar ao menu principal');
     readln(ler);
@@ -75,7 +75,7 @@ begin
       writeln('Digite o valor do ponto');
       readln(valor);
       if (valor < matriz[1,1]) or (valor > matriz[1, tamanho]) then
-        writeln('Não é aconselhavel escolher um ponto fora do intervalo da interpolação.');
+        writeln('Nao e aconselhavel escolher um ponto fora do intervalo da interpolacao.');
       writeln('P(',FloatToString(valor),') = ', FloatToString(ValorPolinomioLagrange(matriz, tamanho, valor))); 
     end;
   until ler = '2';
@@ -104,7 +104,7 @@ begin
 		writeln(temp);
     writeln;
   
-    writeln('O que você deseja fazer agora?');
+    writeln('O que voce deseja fazer agora?');
     writeln('1-Substituir em um ponto P(a)');
     writeln('2-Voltar ao menu principal');
     readln(ler);
@@ -114,7 +114,7 @@ begin
       writeln('Digite o valor do ponto');
       readln(valor);
       if (valor < matriz[1,1]) or (valor > matriz[1, tamanho]) then
-        writeln('Não é aconselhavel escolher um ponto fora do intervalo da interpolação.');
+        writeln('Nao e aconselhavel escolher um ponto fora do intervalo da interpolacao.');
       writeln('P(',FloatToString(valor),') = ', FloatToString(PolinomioNewtonValor(matriz, -1, tamanho, tipo, valor)));
     end;
   until ler = '2';
