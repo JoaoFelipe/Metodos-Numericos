@@ -14,6 +14,9 @@ interface
   procedure TestDiferencaDivididaNG;
   procedure TestPolinomioNewtonGregory;
 
+  procedure TestTermosNewtonValor;
+  procedure TestPolinomioNewtonValor;
+  procedure TestPolinomioNewtonGregoryValor;
   
 implementation
 
@@ -21,7 +24,9 @@ procedure DoAllNewtonTests;
 begin
   TestCase('Diferença dividida', @TestDiferencaDividida);		  
   TestCase('Termos Newton', @TestTermosNewton);		  
+  TestCase('Termos Newton com Valor', @TestTermosNewtonValor);		  
   TestCase('Polinomio de Newton', @TestPolinomioNewton);		  
+  TestCase('Polinomio de Newton com valor', @TestPolinomioNewtonValor);		  
 end;
 
 procedure DoAllNewtonGregoryTests;
@@ -30,6 +35,7 @@ begin
   TestCase('Diferença finita', @TestDiferencaFinita);		  
   TestCase('Diferença dividida por Newton Gregory', @TestDiferencaDivididaNG);		  
   TestCase('Polinomio de Newton Gregory', @TestPolinomioNewtonGregory);	
+  TestCase('Polinomio de Newton Gregory', @TestPolinomioNewtonGregoryValor);	
 end;
 
 procedure TestDiferencaDividida;
@@ -305,5 +311,69 @@ begin
 end;
 //fazer f(0.7) = 1.7148
 
+procedure TestTermosNewtonValor;
+var
+  matriz: TMatriz;
+begin
+  FloatFormated := '0.000';
+  matriz := NovaMatriz('[[-1, 0, 2][4, 1, -1]]');
+  
+  InitTest('Termo 0 para x = 1 de [[-1, 0, 2],[4, 1, -1]] deve retornar 1');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 0, 1), 1));
+
+  InitTest('Termo 1 para x = 1 de [[-1, 0, 2],[4, 1, -1]] deve retornar 2');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 1, 1), 2));
+
+  InitTest('Termo 2 para x = 1 de [[-1, 0, 2],[4, 1, -1]] deve retornar 2');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 2, 1), 2));
+
+  matriz := NovaMatriz('[[-1, 0, 1, 2, 3][1, 1, 0, -1, -2]]');
+  
+  InitTest('Termo 0 para x = 0.7 de [[-1, 0, 1, 2, 3][1, 1, 0, -1, -2]] deve retornar 1');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 0, 0.7), 1));
+
+  InitTest('Termo 1 de [[-1, 0, 1, 2, 3][1, 1, 0, -1, -2]] deve retornar 1.7');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 1, 0.7), 1.7));
+
+  InitTest('Termo 2 de [[-1, 0, 1, 2, 3][1, 1, 0, -1, -2]] deve retornar 1.19');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 2, 0.7), 1.19));
+
+  InitTest('Termo 3 de [[-1, 0, 1, 2, 3][1, 1, 0, -1, -2]] deve retornar -0.357');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 3, 0.7), -0.357));
+
+  InitTest('Termo 4 de [[-1, 0, 1, 2, 3][1, 1, 0, -1, -2]] deve retornar 0,4641');
+  Assert(FloatEquals(TermoNewtonValor(matriz, 4, 0.7), 0.4641));
+end;
+
+procedure TestPolinomioNewtonValor;
+var
+  vetor: TVetor;
+  matriz: TMatriz;
+begin
+  FloatFormated := '0.000';
+  matriz := NovaMatriz('[[-1, 0, 2][4, 1, -1]]');
+  
+  InitTest('Polinomio de ordem 2 em x=1 de [[-1, 0, 2],[4, 1, -1]] deve retornar -2/3');
+  Assert(FloatEquals(PolinomioNewtonValor(matriz, 2, 3, 'Newton', 1) , -2/3));
+
+  InitTest('Polinomio de ordem maxima(-1) em x=1 de [[-1, 0, 2],[4, 1, -1]] deve retornar -2/3');
+  Assert(FloatEquals(PolinomioNewtonValor(matriz, -1, 3, 'Newton', 1) , -2/3));
+end;
+
+procedure TestPolinomioNewtonGregoryValor;
+var
+  matriz: TMatriz;
+begin
+  FloatFormated := '0.000';
+  matriz := NovaMatriz('[[0, 0.5, 1, 1.5, 2][0, 1.1487, 2.7183, 4.9811, 8.3890]]');
+  InitTest('Polinomio de ordem 4 em x = 0.7 de [[0, 0.5, 1, 1.5, 2],[0, 1.1487, 2.7183, 4.9811, 8.3890]] deve retornar 1.7148');
+  Assert(FloatEquals(PolinomioNewtonValor(matriz, 4, 5, 'NewtonGregory', 0.7), 1.7148));
+
+  Assert(FloatEquals(PolinomioNewtonValor(matriz, 4, 5, 'NewtonGregory', 0.7), 1.7148));
+  InitTest('Polinomio de ordem máxima (-1) em x = 0.7 de [[0, 0.5, 1, 1.5, 2],[0, 1.1487, 2.7183, 4.9811, 8.3890]] deve retornar 1.7148');
+  Assert(FloatEquals(PolinomioNewtonValor(matriz, -1, 5, 'NewtonGregory', 0.7), 1.7148));
+
+end;
+//fazer f(0.7) = 1.7148
 
 end.

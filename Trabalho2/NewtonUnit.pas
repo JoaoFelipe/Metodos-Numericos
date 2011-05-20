@@ -23,6 +23,9 @@ interface
 
   procedure ImprimirTabela(matriz: TMatriz; ordem, Tamanho:Integer; Tipo:String);
 
+  function TermoNewtonValor(matriz: TMatriz; ordem: Integer; Valor: Real):Real;
+  function PolinomioNewtonValor(matriz: TMatriz; ordem, Tamanho: Integer; Tipo:String;  Valor:Real):Real;
+
 implementation
   
 Uses SysUtils, StrUtils;
@@ -245,6 +248,43 @@ begin
   writeln(linha);  //-----------------------
 
   writeln;
+end;
+
+function TermoNewtonValor(matriz: TMatriz; ordem: Integer; Valor: Real):Real;
+var
+  temp: Real; 
+  i: Integer;
+  resultado: real;
+begin
+  resultado := 1;
+  if ordem <> 0 then
+  begin
+    for i := 1 to ordem do
+    begin
+      temp := matriz[1, i];
+      resultado := resultado * (Valor - temp);
+    end;
+  end;
+  TermoNewtonValor := resultado;
+end;
+
+function PolinomioNewtonValor(matriz: TMatriz; ordem, Tamanho: Integer; Tipo:String; Valor:Real):Real;
+var
+  i: Integer;
+  resultado: real;
+  temp : real;
+begin
+  if ordem = -1 then ordem := Tamanho - 1;
+  resultado := 0;
+  for i := 0 to ordem do
+  begin
+    if Tipo = 'Newton' then 
+      temp := DiferencaDividida(matriz, ExtrairVetor(matriz, i), i, Tamanho)
+    else
+      temp := DiferencaDivididaNG(matriz, i, Tamanho);
+    resultado := resultado + temp * TermoNewtonValor(matriz, i, valor)
+  end;
+  PolinomioNewtonValor:= resultado;
 end;
 
 end.

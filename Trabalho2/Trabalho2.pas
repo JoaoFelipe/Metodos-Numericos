@@ -45,30 +45,79 @@ end;
 
 procedure ResolverLagrange;
 var temp:string;
+ ler:char;
+ valor: real;
 begin
-  writeln('Resolvendo seguinte interpolacao pela Forma de Lagrange');
-  MostrarTabela(matriz, tamanho);
-  writeln;
-  temp := PolinomioLagrange(matriz, tamanho, passo);
-  write('P(x) = ');
-  writeln(temp);
-  writeln;
-  writeln('Pressione alguma tecla para voltar ao menu');
-  readln;;
+  ler := 'z';
+  repeat  
+    if ler <> 'z' then
+    begin
+      writeln;
+      writeln('Digite uma tecla para continuar');
+      readln;
+    end;
+    clrscr;
+    writeln('Resolvendo seguinte interpolacao pela Forma de Lagrange');
+    MostrarTabela(matriz, tamanho);
+    writeln;
+    temp := PolinomioLagrange(matriz, tamanho, passo);
+    write('P(x) = ');
+    writeln(temp);
+    writeln;
+  
+    writeln('O que você deseja fazer agora?');
+    writeln('1-Substituir em um ponto P(a)');
+    writeln('2-Voltar ao menu principal');
+    readln(ler);
+    if ler = '1' then
+    begin
+      writeln;
+      writeln('Digite o valor do ponto');
+      readln(valor);
+      if (valor < matriz[1,1]) or (valor > matriz[1, tamanho]) then
+        writeln('Não é aconselhavel escolher um ponto fora do intervalo da interpolação.');
+      writeln('P(',FloatToString(valor),') = ', FloatToString(ValorPolinomioLagrange(matriz, tamanho, valor))); 
+    end;
+  until ler = '2';
 end;
 
 procedure ResolverNewton(tipo: String);
 var temp:string;
+ler:char;
+valor:real;
 begin
-  writeln('Resolvendo seguinte interpolacao pela Forma de ', tipo);
-  MostrarTabela(matriz, tamanho);
-  writeln;
-  temp := PolinomioNewton(matriz, -1, tamanho, tipo, passo);
-  write('P(x) = ');
-  writeln(temp);
-  writeln;
-  writeln('Pressione alguma tecla para voltar ao menu');
-  readln;
+  ler := 'z';
+  repeat  
+    if ler <> 'z' then
+    begin
+      writeln;
+      writeln('Digite uma tecla para continuar');
+      readln;
+    end;
+    clrscr;
+
+		writeln('Resolvendo seguinte interpolacao pela Forma de ', tipo);
+		MostrarTabela(matriz, tamanho);
+		writeln;
+		temp := PolinomioNewton(matriz, -1, tamanho, tipo, passo);
+		write('P(x) = ');
+		writeln(temp);
+    writeln;
+  
+    writeln('O que você deseja fazer agora?');
+    writeln('1-Substituir em um ponto P(a)');
+    writeln('2-Voltar ao menu principal');
+    readln(ler);
+    if ler = '1' then
+    begin
+      writeln;
+      writeln('Digite o valor do ponto');
+      readln(valor);
+      if (valor < matriz[1,1]) or (valor > matriz[1, tamanho]) then
+        writeln('Não é aconselhavel escolher um ponto fora do intervalo da interpolação.');
+      writeln('P(',FloatToString(valor),') = ', FloatToString(PolinomioNewtonValor(matriz, -1, tamanho, tipo, valor)));
+    end;
+  until ler = '2';
 end;
 
 procedure LerPasso;
